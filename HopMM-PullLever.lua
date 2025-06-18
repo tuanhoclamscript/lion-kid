@@ -55,20 +55,25 @@ getgenv().Team = "Marines"
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/7a64456af124338fdb396f5f677b19d9.lua"))()
 
 -- Tự động di chuyển tới Zou nếu chưa ở đó
+local function autoActivateAbility()
+    while task.wait(3) do
+        local arguments = {
+            [1] = "ActivateAbility"
+        }
+        game:GetService("ReplicatedStorage").Remotes.CommE:FireServer(unpack(arguments))
+    end
+end
+
 while true do
     if game.PlaceId == 7449423635 then -- ID map Zou
         print("Đã ở Zou, bắt đầu farm!")
         
-        -- Thêm phần auto activate ability sau khi đã đến Zou
-        while task.wait(3) do
-            local arguments = {
-                [1] = "ActivateAbility"
-            }
-            game:GetService("ReplicatedStorage").Remotes.CommE:FireServer(unpack(arguments))
-        end
+        -- Tạo coroutine cho auto activate để chạy song song
+        coroutine.wrap(autoActivateAbility)()
         
         break
+    else
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
+        task.wait(5)
     end
-    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
-    task.wait(5)
 end
