@@ -17,12 +17,12 @@ getgenv().Setting = {
         "Xx_VICT0RIACIRCUITTI"
     },
     AltAccount = {
-        "JacksonZachary600",
+        "ConnerTanner74",
         "MauveChristie9460"
     },
     KeyAccount = "",   -- put account name in between "" to hop full moon server. Other accounts will hop server with this account
     HopServer = false, -- Hop Full Moon Server
-    KickWhenEndFullMoon = false,
+    KickWhenEndFullMoon = true,
 }
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Wraith1vs11/Rejoin/refs/heads/main/UGPhone's%20Scripts"))()
 while true do
